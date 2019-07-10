@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+        *** GENERATED FROM jax-ws.xml - DO NOT EDIT !                             ***
+        *** TO MODIFY wsimport options USE Web Service node -> Edit WS Attributes ***
+        *** TO CHANGE TARGETS GENERATED TO jaxws-build.xml COPY THOSE             ***
+        *** TARGETS TO ../build.xml AND MODIFY THAT FILE INSTEAD                  ***
+
+        --><project xmlns:xalan="http://xml.apache.org/xslt" xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${libs.jaxws21.classpath}"/>
+        </taskdef>
+    </target>
+    <target name="wsimport-client-DestinoWS" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/DestinoWS"/>
+        <property name="wsdl-DestinoWS" location="xml-resources/web-service-references/DestinoWS/wsdl/localhost_8080/EDDPROYECTO2/DestinoWS.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/DestinoWS" destdir="${build.generated.dir}/jax-wsCache/DestinoWS" wsdl="${wsdl-DestinoWS}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/EDDPROYECTO2/DestinoWS?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${wsdl-DestinoWS}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/DestinoWS"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/DestinoWS">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-DestinoWS" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/DestinoWS"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/ws"/>
+    </target>
+    <target name="wsimport-client-RutaWS" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/RutaWS"/>
+        <property name="wsdl-RutaWS" location="xml-resources/web-service-references/RutaWS/wsdl/localhost_8080/EDDPROYECTO2/RutaWS.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/RutaWS" destdir="${build.generated.dir}/jax-wsCache/RutaWS" wsdl="${wsdl-RutaWS}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/EDDPROYECTO2/RutaWS?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${wsdl-RutaWS}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/RutaWS"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/RutaWS">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-RutaWS" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/RutaWS"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/ws"/>
+    </target>
+    <target name="wsimport-client-ReservacionWS" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/ReservacionWS"/>
+        <property name="wsdl-ReservacionWS" location="xml-resources/web-service-references/ReservacionWS/wsdl/localhost_8080/EDDPROYECTO2/ReservacionWS.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ReservacionWS" destdir="${build.generated.dir}/jax-wsCache/ReservacionWS" wsdl="${wsdl-ReservacionWS}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/EDDPROYECTO2/ReservacionWS?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${wsdl-ReservacionWS}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/ReservacionWS"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/ReservacionWS">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-ReservacionWS" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/ReservacionWS"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/ws"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-DestinoWS, wsimport-client-RutaWS, wsimport-client-ReservacionWS"/>
+</project>
