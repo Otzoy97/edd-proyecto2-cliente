@@ -6,6 +6,7 @@
 package com.cliente.pres.rutas;
 
 import com.cliente.pres.Visor;
+import java.util.Iterator;
 import javax.swing.JDesktopPane;
 
 /**
@@ -15,8 +16,10 @@ import javax.swing.JDesktopPane;
 public class EnRuta extends javax.swing.JInternalFrame {
 
     private final JDesktopPane padre;
+
     /**
      * Creates new form EnRuta
+     *
      * @param padre
      */
     public EnRuta(JDesktopPane padre) {
@@ -37,7 +40,7 @@ public class EnRuta extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnVisualizar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         cmbOrigen = new javax.swing.JComboBox<>();
         cmbDestino = new javax.swing.JComboBox<>();
@@ -69,18 +72,18 @@ public class EnRuta extends javax.swing.JInternalFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         jPanel1.add(jLabel2, gridBagConstraints);
 
-        jButton1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
-        jButton1.setText("Visualizar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnVisualizar.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
+        btnVisualizar.setText("Visualizar");
+        btnVisualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnVisualizarActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
-        jPanel1.add(jButton1, gridBagConstraints);
+        jPanel1.add(btnVisualizar, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -108,41 +111,73 @@ public class EnRuta extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    /**
+     * Instancia un nuevo {@code com.cliente.pres.Visor} para visualizar el reporte de una ruta
+     * @param evt 
+     */
+    private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
         // TODO add your handling code here:
-        Visor i = new Visor("","");
+        //Recupera los codigo de los combo box list
+        Integer origen = ((com.cliente.pres.Elemento)this.cmbOrigen.getSelectedItem()).getId(),
+                destino = ((com.cliente.pres.Elemento)this.cmbDestino.getSelectedItem()).getId();
+        //Ejecuta el webservice y recupera el string base64
+        String base64 = reporteRutaEn(origen,destino);
+        Visor i = new Visor(base64, String.format("Ruta de %s a %s", 
+                ((com.cliente.pres.Elemento)this.cmbOrigen.getSelectedItem()).getValue(),
+                ((com.cliente.pres.Elemento)this.cmbDestino.getSelectedItem())));
         padre.add(i);
         i.setVisible(true);
         i.pintar();
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnVisualizarActionPerformed
 
-        /**
+    /**
      * Llena las listas con la información de los encabezados
-     * @param viajes 
      */
-    private void llenarLista() {
+    public void llenarLista() {
         //Recupera la información de los encabezados
-        String[] viajes = new String[10], aux;
+        java.util.List<String> viajes = recuperarEncabezados();
+        String[] aux;
         javax.swing.DefaultComboBoxModel a = new javax.swing.DefaultComboBoxModel();
         javax.swing.DefaultComboBoxModel b = new javax.swing.DefaultComboBoxModel();
-        
         for (String e : viajes) {
             aux = e.split(",");
-            a.addElement(new com.cliente.pres.Elemento( Integer.parseInt(aux[0]) , aux[1]));
-            b.addElement(new com.cliente.pres.Elemento( Integer.parseInt(aux[0]) , aux[1]));
+            a.addElement(new com.cliente.pres.Elemento(Integer.parseInt(aux[0]), aux[1]));
+            b.addElement(new com.cliente.pres.Elemento(Integer.parseInt(aux[0]), aux[1]));
         }
         this.cmbOrigen.setModel(a);
         this.cmbDestino.setModel(b);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnVisualizar;
     private javax.swing.JComboBox<String> cmbDestino;
     private javax.swing.JComboBox<String> cmbOrigen;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * 
+     * @return 
+     */
+    private static java.util.List<java.lang.String> recuperarEncabezados() {
+        com.cliente.ws.ruta.RutaWS_Service service = new com.cliente.ws.ruta.RutaWS_Service();
+        com.cliente.ws.ruta.RutaWS port = service.getRutaWSPort();
+        return port.recuperarEncabezados();
+    }
+
+    /**
+     * 
+     * @param origen
+     * @param destino
+     * @return 
+     */
+    private static String reporteRutaEn(int origen, int destino) {
+        com.cliente.ws.ruta.RutaWS_Service service = new com.cliente.ws.ruta.RutaWS_Service();
+        com.cliente.ws.ruta.RutaWS port = service.getRutaWSPort();
+        return port.reporteRutaEn(origen, destino);
+    }
 }

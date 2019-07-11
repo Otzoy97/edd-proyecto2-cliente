@@ -24,6 +24,7 @@ public class Carga extends javax.swing.JInternalFrame {
 
     private JFileChooser fch;
     private final Frame padre;
+    private com.cliente.pres.Lista<com.cliente.pres.Elemento> indice;
 
     /**
      * Creates new form Carga
@@ -39,6 +40,7 @@ public class Carga extends javax.swing.JInternalFrame {
         FileNameExtensionFilter ExtensionFilter = new FileNameExtensionFilter("Archivo separado por comas CSV", new String[]{"csv", "CSV"});
         //Coloca un filtro para que solo permita abrir archivos CSV
         this.fch.setFileFilter(ExtensionFilter);
+        indexar();
     }
 
     /**
@@ -52,7 +54,7 @@ public class Carga extends javax.swing.JInternalFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblReservacion = new javax.swing.JLabel();
         btnReserva = new javax.swing.JButton();
 
         setClosable(true);
@@ -66,13 +68,13 @@ public class Carga extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cargar reservaciones", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Microsoft Sans Serif", 0, 12))); // NOI18N
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel1.setText("Presiona aquí para seleccionar un archivo");
-        jLabel1.setToolTipText("");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblReservacion.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
+        lblReservacion.setForeground(new java.awt.Color(153, 153, 153));
+        lblReservacion.setText("Presiona aquí para seleccionar un archivo");
+        lblReservacion.setToolTipText("");
+        lblReservacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                lblReservacionMouseClicked(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -80,7 +82,7 @@ public class Carga extends javax.swing.JInternalFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
-        jPanel1.add(jLabel1, gridBagConstraints);
+        jPanel1.add(lblReservacion, gridBagConstraints);
 
         btnReserva.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
         btnReserva.setText("Cargar.");
@@ -102,19 +104,19 @@ public class Carga extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void lblReservacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReservacionMouseClicked
         // TODO add your handling code here:
         if (this.fch.showOpenDialog(padre) == JFileChooser.APPROVE_OPTION) {
-            this.jLabel1.setText(this.fch.getSelectedFile().getAbsolutePath());
+            this.lblReservacion.setText(this.fch.getSelectedFile().getAbsolutePath());
             this.btnReserva.setEnabled(true);
         } else {
         }
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_lblReservacionMouseClicked
 
     private void btnReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservaActionPerformed
         // TODO add your handling code here:
-        //cargarReservacion(this.jLabel1.getText());
-        this.jLabel1.setText("Presiona aquí para seleccionar un archivo");
+        cargarReservacion(this.lblReservacion.getText());
+        this.lblReservacion.setText("Presiona aquí para seleccionar un archivo");
         this.btnReserva.setEnabled(false);
     }//GEN-LAST:event_btnReservaActionPerformed
 
@@ -122,41 +124,107 @@ public class Carga extends javax.swing.JInternalFrame {
      * Carga las reservaciones del archivo seleccionado
      * @param URL 
      */
-//    public void cargarReservacion(String URL) {
-//        String l, csv[];
-//        BufferedReader br = null;
-//        try {
-//            br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(URL)), Charset.forName("UTF-8")));
-//            while ((l = br.readLine()) != null) {
-//                csv = l.split(",");
-//                Lista<String> lviaje = new Lista();
-//                int idReservacion = Integer.parseInt(csv[1]);
-//                while (Proyecto2.th.existeLlave(idReservacion)) {
-//                    idReservacion++;
-//                }
-//                for (int i = 4; i < csv.length; i++) {
-//                    String n = Proyecto2.m.nombreDestino(Integer.parseInt(csv[i]));
-//                    lviaje.agregarAlFinal(n != null ? n : "<CI>");
-//                }
-//                th.insertar(idReservacion, new Reservacion(csv[0], Float.valueOf(csv[2]), Float.valueOf(csv[3]), lviaje));
-//            }
-//        } catch (IOException | NumberFormatException ex) {
-//            JOptionPane.showMessageDialog(padre, "Ocurrió un error al leer el archivo. Por favor verifique su sintaxis.", "Error", JOptionPane.ERROR_MESSAGE);
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(padre, ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
-//        } finally {
-//            try {
-//                if (br != null) {
-//                    br.close();
-//                }
-//            } catch (IOException ex) {
-//            }
-//        }
-//    }
+    public void cargarReservacion(String URL) {
+        String l, csv[], lviaje = "";
+        BufferedReader br = null;
+        StringBuilder responseLog = new StringBuilder();
+        try {
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(URL)), Charset.forName("UTF-8")));
+            while ((l = br.readLine()) != null) {
+                csv = l.split(",");
+                int idReservacion = Integer.parseInt(csv[1]);
+                while (verificarLlave(idReservacion)) {
+                    idReservacion++;
+                }
+                for (int i = 4; i < csv.length; i++) {
+                    String n = buscar(Integer.parseInt(csv[i])) + ",";
+                    lviaje = (n != null ? n : "<CI>");
+                }
+                //Elimina la ultima coma
+                lviaje = lviaje.substring(0,lviaje.length()-2);
+                responseLog.append(agregarReservacion(idReservacion,csv[0], Float.valueOf(csv[2]), Float.valueOf(csv[3]), lviaje)).append("\n");
+            }
+        } catch (IOException | NumberFormatException ex) {
+            JOptionPane.showMessageDialog(padre, "Ocurrió un error al leer el archivo. Por favor verifique su sintaxis.", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(padre, ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
+        } finally {
+            try {
+                if (br != null) {
+                    br.close();
+                }
+            } catch (IOException ex) {
+            }
+        }
+        responseLog.append("- Operación finalizada -");
+        JOptionPane.showMessageDialog(this, responseLog.toString(), "Resultado de la operación", JOptionPane.INFORMATION_MESSAGE);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReserva;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblReservacion;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Recupera los encabezados y los indexa 
+     */
+    private void indexar(){
+        java.util.List<String> encabezados = recuperarEncabezados();
+        indice = new com.cliente.pres.Lista();
+        String clave[];
+        for(String str : encabezados){
+            clave = str.split(",");
+            indice.agregarAlFinal(new com.cliente.pres.Elemento(Integer.parseInt(clave[0]),clave[1]));
+        }
+    }
+    
+    /**
+     * Busca en la lista el elemento con la clave
+     * @param clave
+     * @return 
+     */
+    private String buscar(int clave){
+        for(com.cliente.pres.Elemento el : indice){
+            if(el.getId() == clave)
+                return el.getValue();
+        }
+        return null;
+    }
+    
+    /**
+     * Verifica la existencia de una llave
+     * @param llave
+     * @return 
+     */
+    private static boolean verificarLlave(int llave) {
+        com.cliente.ws.reservacion.ReservacionWS_Service service = new com.cliente.ws.reservacion.ReservacionWS_Service();
+        com.cliente.ws.reservacion.ReservacionWS port = service.getReservacionWSPort();
+        return port.verificarLlave(llave);
+    }
+
+    /**
+     * Agrega una nueva reservación
+     * @param llave
+     * @param nombreCliente
+     * @param costo
+     * @param tiempo
+     * @param viaje
+     * @return 
+     */
+    private static String agregarReservacion(int llave, java.lang.String nombreCliente, float costo, float tiempo, java.lang.String viaje) {
+        com.cliente.ws.reservacion.ReservacionWS_Service service = new com.cliente.ws.reservacion.ReservacionWS_Service();
+        com.cliente.ws.reservacion.ReservacionWS port = service.getReservacionWSPort();
+        return port.agregarReservacion(llave, nombreCliente, costo, tiempo, viaje);
+    }
+
+    /**
+     * recupera los encabezados y los deja en 
+     * @return 
+     */
+    private static java.util.List<java.lang.String> recuperarEncabezados() {
+        com.cliente.ws.ruta.RutaWS_Service service = new com.cliente.ws.ruta.RutaWS_Service();
+        com.cliente.ws.ruta.RutaWS port = service.getRutaWSPort();
+        return port.recuperarEncabezados();
+    }
 }

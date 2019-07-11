@@ -19,6 +19,12 @@
 <message name="verificarLlaveResponse">
 <part name="parameters" element="tns:verificarLlaveResponse" />
 </message>
+<message name="agregarReservacion">
+<part name="parameters" element="tns:agregarReservacion" />
+</message>
+<message name="agregarReservacionResponse">
+<part name="parameters" element="tns:agregarReservacionResponse" />
+</message>
 <message name="eliminarReservacionConLlave">
 <part name="parameters" element="tns:eliminarReservacionConLlave" />
 </message>
@@ -37,12 +43,6 @@
 <message name="reservacionesDelClienteResponse">
 <part name="parameters" element="tns:reservacionesDelClienteResponse" />
 </message>
-<message name="agregarReservacion">
-<part name="parameters" element="tns:agregarReservacion" />
-</message>
-<message name="agregarReservacionResponse">
-<part name="parameters" element="tns:agregarReservacionResponse" />
-</message>
 <portType name="ReservacionWS">
 <operation name="generarTablaHash">
 <input wsam:Action="http://ws.com/ReservacionWS/generarTablaHashRequest" message="tns:generarTablaHash" />
@@ -51,6 +51,10 @@
 <operation name="verificarLlave">
 <input wsam:Action="http://ws.com/ReservacionWS/verificarLlaveRequest" message="tns:verificarLlave" />
 <output wsam:Action="http://ws.com/ReservacionWS/verificarLlaveResponse" message="tns:verificarLlaveResponse" />
+</operation>
+<operation name="agregarReservacion">
+<input wsam:Action="http://ws.com/ReservacionWS/agregarReservacionRequest" message="tns:agregarReservacion" />
+<output wsam:Action="http://ws.com/ReservacionWS/agregarReservacionResponse" message="tns:agregarReservacionResponse" />
 </operation>
 <operation name="eliminarReservacionConLlave">
 <input wsam:Action="http://ws.com/ReservacionWS/eliminarReservacionConLlaveRequest" message="tns:eliminarReservacionConLlave" />
@@ -63,10 +67,6 @@
 <operation name="reservacionesDelCliente">
 <input wsam:Action="http://ws.com/ReservacionWS/reservacionesDelClienteRequest" message="tns:reservacionesDelCliente" />
 <output wsam:Action="http://ws.com/ReservacionWS/reservacionesDelClienteResponse" message="tns:reservacionesDelClienteResponse" />
-</operation>
-<operation name="agregarReservacion">
-<input wsam:Action="http://ws.com/ReservacionWS/agregarReservacionRequest" message="tns:agregarReservacion" />
-<output wsam:Action="http://ws.com/ReservacionWS/agregarReservacionResponse" message="tns:agregarReservacionResponse" />
 </operation>
 </portType>
 <binding name="ReservacionWSPortBinding" type="tns:ReservacionWS">
@@ -89,6 +89,15 @@
 <soap:body use="literal" />
 </output>
 </operation>
+<operation name="agregarReservacion">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
 <operation name="eliminarReservacionConLlave">
 <soap:operation soapAction="" />
 <input>
@@ -108,15 +117,6 @@
 </output>
 </operation>
 <operation name="reservacionesDelCliente">
-<soap:operation soapAction="" />
-<input>
-<soap:body use="literal" />
-</input>
-<output>
-<soap:body use="literal" />
-</output>
-</operation>
-<operation name="agregarReservacion">
 <soap:operation soapAction="" />
 <input>
 <soap:body use="literal" />

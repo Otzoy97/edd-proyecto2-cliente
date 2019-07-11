@@ -11,12 +11,17 @@ import java.awt.Toolkit;
 import javax.swing.JInternalFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import com.cliente.ws.destino.*;
+
 /**
  *
  * @author otzoy
  */
 public class ClienteEDD extends javax.swing.JFrame {
    
+    
+    
+    
     /**
      * Creates new form ClienteEDD
      */
@@ -49,7 +54,7 @@ public class ClienteEDD extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        tablaHash = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jMenuItem4 = new javax.swing.JMenuItem();
 
@@ -169,15 +174,15 @@ public class ClienteEDD extends javax.swing.JFrame {
         jMenu2.add(jMenuItem1);
         jMenu2.add(jSeparator3);
 
-        jMenuItem2.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/map.png"))); // NOI18N
-        jMenuItem2.setText("Tabla de reservaciones");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        tablaHash.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
+        tablaHash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/map.png"))); // NOI18N
+        tablaHash.setText("Tabla de reservaciones");
+        tablaHash.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                tablaHashActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
+        jMenu2.add(tablaHash);
         jMenu2.add(jSeparator4);
 
         jMenuItem4.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
@@ -197,44 +202,72 @@ public class ClienteEDD extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Instancia una nuevo {@code com.cliente.pres.rutas.Carga} para cargar rutas o destinos
+     * @param evt 
+     */
     private void cargarRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarRutasActionPerformed
         // TODO add your handling code here:
         JInternalFrame i = new Carga(this);
         this.jDesktopPane1.add(i);
         i.setVisible(true);
     }//GEN-LAST:event_cargarRutasActionPerformed
-
+    
+    /**
+     * Instancia un nuevo {@code com.cliente.pres.rutas.Modificar} para modificar o eliminar rutas
+     * @param evt 
+     */
     private void modificarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarRutaActionPerformed
         // TODO add your handling code here:
         JInternalFrame i = new com.cliente.pres.rutas.Modificar(this);
         this.jDesktopPane1.add(i);
         i.setVisible(true);
     }//GEN-LAST:event_modificarRutaActionPerformed
-
+    
+    /**
+     * Instancia un nuevo {@code com.cliente.pres.Visor} que muestre el árbol B de destinos
+     * @param evt 
+     */
     private void visualizarArbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarArbolActionPerformed
         // TODO add your handling code here:
-        Visor i = new Visor("","");
+        //Recupera el base64
+        String base64 = generarArbol();
+        Visor i = new Visor(base64,"Arbol de destinos");
         this.jDesktopPane1.add(i);
         i.setVisible(true);
         i.pintar();
     }//GEN-LAST:event_visualizarArbolActionPerformed
 
+    /**
+     * Instancia un nuevo {@code com.cliente.pres.Visor} que muestre la matriz de rutas
+     * @param evt 
+     */
     private void visualizarMatrizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarMatrizActionPerformed
         // TODO add your handling code here:
-        Visor i = new Visor("","");
+        String base64 = generarMatriz();
+        Visor i = new Visor(base64,"Matriz de rutas");
         this.jDesktopPane1.add(i);
         i.setVisible(true);
         i.pintar();
     }//GEN-LAST:event_visualizarMatrizActionPerformed
 
+    /**
+     * Instancia un nuevo {@code com.cliente.pres.Visor} que muestre el grafo de rutas
+     * @param evt 
+     */
     private void visualizarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarGrafoActionPerformed
         // TODO add your handling code here:
-        Visor i = new Visor("","");
+        String base64 = generarGrafoRutas();
+        Visor i = new Visor(base64,"Grafo de rutas");
         this.jDesktopPane1.add(i);
         i.setVisible(true);
         i.pintar();
     }//GEN-LAST:event_visualizarGrafoActionPerformed
-
+    
+    /**
+     * Instancia un nuevo {@code com.cliente.pres.reservaciones.Carga} para cargar reservaciones
+     * @param evt 
+     */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         JInternalFrame i = new com.cliente.pres.reservaciones.Carga(this);
@@ -242,24 +275,38 @@ public class ClienteEDD extends javax.swing.JFrame {
         i.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    /**
+     * Instancia un nuevo {@code com.cliente.pres.Visor} que muestre la tabla hash de reservaciones
+     * @param evt 
+     */
+    private void tablaHashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tablaHashActionPerformed
         // TODO add your handling code here:
-        Visor i = new Visor("","");
+        String base64 = generarTablaHash();
+        Visor i = new Visor(base64,"Tabla de Reservaciones");
         this.jDesktopPane1.add(i);
         i.setVisible(true);
         i.pintar();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_tablaHashActionPerformed
 
+    /**
+     * Instancia un nuevo {@code com.cliente.pres.rutas.EnRuta} para solicitar visualizar una ruta en particular
+     * @param evt 
+     */
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        JInternalFrame i = new com.cliente.pres.rutas.EnRuta(this.jDesktopPane1);
+        com.cliente.pres.rutas.EnRuta i = new com.cliente.pres.rutas.EnRuta(this.jDesktopPane1);
+        i.llenarLista();
         this.jDesktopPane1.add(i);
         i.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    /**
+     * Instancia un nuevo {@code com.cliente.pres.reservaciones.Android} que permite agregar reservaciones
+     * @param evt 
+     */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        JInternalFrame i = new com.cliente.pres.reservaciones.Android();
+        com.cliente.pres.reservaciones.Android i = new com.cliente.pres.reservaciones.Android();
         this.jDesktopPane1.add(i);
         i.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
@@ -295,7 +342,6 @@ public class ClienteEDD extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPopupMenu.Separator jSeparator1;
@@ -304,8 +350,49 @@ public class ClienteEDD extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem modificarRuta;
+    private javax.swing.JMenuItem tablaHash;
     private javax.swing.JMenuItem visualizarArbol;
     private javax.swing.JMenuItem visualizarGrafo;
     private javax.swing.JMenuItem visualizarMatriz;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * 
+     * @return base64 que representa el grafo de rutas
+     */
+    private static String generarGrafoRutas() {
+        com.cliente.ws.ruta.RutaWS_Service service = new com.cliente.ws.ruta.RutaWS_Service();
+        com.cliente.ws.ruta.RutaWS port = service.getRutaWSPort();
+        return port.generarGrafoRutas();
+    }
+
+    /**
+     * 
+     * @return base64 que representa la imagen del árbol
+     */
+    private static String generarArbol() {
+        com.cliente.ws.destino.DestinoWS_Service service = new com.cliente.ws.destino.DestinoWS_Service();
+        com.cliente.ws.destino.DestinoWS port = service.getDestinoWSPort();
+        return port.generarArbol();
+    }
+
+    /**
+     * 
+     * @return base64 que representa la imagen de la matriz
+     */
+    private static String generarMatriz() {
+        com.cliente.ws.ruta.RutaWS_Service service = new com.cliente.ws.ruta.RutaWS_Service();
+        com.cliente.ws.ruta.RutaWS port = service.getRutaWSPort();
+        return port.generarMatriz();
+    }
+
+    /**
+     * 
+     * @return base64 que representa la imagen de la tabla hash
+     */
+    private static String generarTablaHash() {
+        com.cliente.ws.reservacion.ReservacionWS_Service service = new com.cliente.ws.reservacion.ReservacionWS_Service();
+        com.cliente.ws.reservacion.ReservacionWS port = service.getReservacionWSPort();
+        return port.generarTablaHash();
+    }
 }

@@ -53,10 +53,10 @@ public class Carga extends javax.swing.JInternalFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblDestino = new javax.swing.JLabel();
         btnDestino = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblRuta = new javax.swing.JLabel();
         btnRuta = new javax.swing.JButton();
 
         setClosable(true);
@@ -70,13 +70,13 @@ public class Carga extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cargar destinos", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Microsoft Sans Serif", 0, 12))); // NOI18N
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel1.setText("Presiona aquí para seleccionar un archivo");
-        jLabel1.setToolTipText("");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblDestino.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
+        lblDestino.setForeground(new java.awt.Color(153, 153, 153));
+        lblDestino.setText("Presiona aquí para seleccionar un archivo");
+        lblDestino.setToolTipText("");
+        lblDestino.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                lblDestinoMouseClicked(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -84,7 +84,7 @@ public class Carga extends javax.swing.JInternalFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
-        jPanel1.add(jLabel1, gridBagConstraints);
+        jPanel1.add(lblDestino, gridBagConstraints);
 
         btnDestino.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
         btnDestino.setText("Cargar.");
@@ -106,13 +106,13 @@ public class Carga extends javax.swing.JInternalFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cargar rutas", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Microsoft Sans Serif", 0, 12))); // NOI18N
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel2.setText("Presiona aquí para seleccionar un archivo");
-        jLabel2.setToolTipText("");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblRuta.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
+        lblRuta.setForeground(new java.awt.Color(153, 153, 153));
+        lblRuta.setText("Presiona aquí para seleccionar un archivo");
+        lblRuta.setToolTipText("");
+        lblRuta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                lblRutaMouseClicked(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -120,7 +120,7 @@ public class Carga extends javax.swing.JInternalFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
-        jPanel2.add(jLabel2, gridBagConstraints);
+        jPanel2.add(lblRuta, gridBagConstraints);
 
         btnRuta.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
         btnRuta.setText("Cargar");
@@ -146,111 +146,144 @@ public class Carga extends javax.swing.JInternalFrame {
 
     private void btnDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDestinoActionPerformed
         // TODO add your handling code here:
-        //cargarDestino(this.jLabel1.getText());
-        this.jLabel1.setText("Presiona aquí para seleccionar un archivo");
+        cargarDestino(this.lblDestino.getText());
+        this.lblDestino.setText("Presiona aquí para seleccionar un archivo");
         this.btnDestino.setEnabled(false);
     }//GEN-LAST:event_btnDestinoActionPerformed
 
     private void btnRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutaActionPerformed
         // TODO add your handling code here:
-        //cargarRuta(this.jLabel2.getText());
-        this.jLabel2.setText("Presiona aquí para seleccionar un archivo");
+        cargarRuta(this.lblRuta.getText());
+        this.lblRuta.setText("Presiona aquí para seleccionar un archivo");
         this.btnRuta.setEnabled(false);
     }//GEN-LAST:event_btnRutaActionPerformed
 
     /**
-     * Depliega el selector de archivos 
-     * @param evt 
+     * Depliega el selector de archivos
+     *
+     * @param evt
      */
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void lblDestinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDestinoMouseClicked
         // TODO add your handling code here:
         if (this.fch.showOpenDialog(padre) == JFileChooser.APPROVE_OPTION) {
-            this.jLabel1.setText(this.fch.getSelectedFile().getAbsolutePath());
+            this.lblDestino.setText(this.fch.getSelectedFile().getAbsolutePath());
             this.btnDestino.setEnabled(true);
-        } else {
         }
-    }//GEN-LAST:event_jLabel1MouseClicked
-    
+    }//GEN-LAST:event_lblDestinoMouseClicked
+
     /**
-     * Depliega el selector de archivos 
-     * @param evt 
+     * Depliega el selector de archivos
+     *
+     * @param evt
      */
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void lblRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRutaMouseClicked
         // TODO add your handling code here:
         if (this.fch.showOpenDialog(padre) == JFileChooser.APPROVE_OPTION) {
-            this.jLabel2.setText(this.fch.getSelectedFile().getAbsolutePath());
+            this.lblRuta.setText(this.fch.getSelectedFile().getAbsolutePath());
             this.btnRuta.setEnabled(true);
-        } else {
-            
         }
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_lblRutaMouseClicked
 
     /**
      * Lee un archivo y guarda los destinos
-     * @param URL 
+     *
+     * @param URL
      */
-//    public void cargarDestino(String URL) {
-//        File f;
-//        String l, csv[];
-//        BufferedReader br = null;
-//
-//        try {
-//            br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(URL)), Charset.forName("UTF-8")));
-//            while ((l = br.readLine()) != null) {
-//                csv = l.split(",");
-//                m.agregarDestino(Integer.valueOf(csv[0]), csv[1]);
-//            }
-//        } catch (FileNotFoundException ex) {
-//            JOptionPane.showMessageDialog(padre, "Archivo no encontrado", "Error", JOptionPane.WARNING_MESSAGE);
-//        } catch (IOException | NumberFormatException ex) {
-//            JOptionPane.showMessageDialog(padre, "Ocurrió un error al leer el archivo. Por favor verifique su sintaxis.", "Error", JOptionPane.ERROR_MESSAGE);
-//        }finally {
-//            try {
-//                if (br != null) {
-//                    br.close();
-//                }
-//            } catch (IOException ex) {
-//            }
-//        }
-//
-//    }
-    
+    private void cargarDestino(String URL) {
+        String l, csv[];
+        BufferedReader br = null;
+        StringBuilder responseLog = new StringBuilder();
+        try {
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(URL)), Charset.forName("UTF-8")));
+            while ((l = br.readLine()) != null) {
+                csv = l.split(",");
+                responseLog.append(agregarDestino(Integer.valueOf(csv[0]), csv[1])).append("\n");
+            }
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(padre, "Archivo no encontrado", "Error", JOptionPane.WARNING_MESSAGE);
+        } catch (IOException | NumberFormatException ex) {
+            JOptionPane.showMessageDialog(padre, "Ocurrió un error al leer el archivo. Por favor verifique su sintaxis.", "Error", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            try {
+                if (br != null) {
+                    br.close();
+                }
+            } catch (IOException ex) {
+            }
+        }
+        responseLog.append("- Operación finalizada -");
+        JOptionPane.showMessageDialog(this, responseLog.toString(), "Resultado de la operación", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     /**
      * Lee un archivo y guarda las rutas
-     * @param URL 
+     *
+     * @param URL
      */
-//    public void cargarRuta(String URL) {
-//        String l, csv[];
-//        BufferedReader br = null;
-//        try {
-//            br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(URL)), Charset.forName("UTF-8")));//new FileReader(new File(URL)));
-//            while ((l = br.readLine()) != null) {
-//                csv = l.split(",");
-//                m.agregarRuta(Integer.valueOf(csv[0]), Integer.valueOf(csv[1]), new Ruta(Float.valueOf(csv[2]), Float.valueOf(csv[3]), csv[4]));
-//                m.agregarRuta(Integer.valueOf(csv[1]), Integer.valueOf(csv[0]), new Ruta(Float.valueOf(csv[2]), Float.valueOf(csv[3]), csv[4]));
-//            }
-//        } catch (FileNotFoundException ex) {
-//            JOptionPane.showMessageDialog(padre, "Archivo no encontrado", "Error", JOptionPane.WARNING_MESSAGE);
-//        } catch (IOException | NumberFormatException ex) {
-//            JOptionPane.showMessageDialog(padre, "Ocurrió un error al leer el archivo. Por favor verifique su sintaxis.", "Error", JOptionPane.ERROR_MESSAGE);
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(padre, ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
-//        }finally {
-//            try {
-//                if (br != null) {
-//                    br.close();
-//                }
-//            } catch (IOException ex) {
-//            }
-//        }
-//    }
+    private void cargarRuta(String URL) {
+        String l, csv[];
+        BufferedReader br = null;
+        StringBuilder responseLog = new StringBuilder();
+        try {
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(URL)), Charset.forName("UTF-8")));//new FileReader(new File(URL)));
+            while ((l = br.readLine()) != null) {
+                csv = l.split(",");
+                responseLog.append(agregarRuta(Integer.valueOf(csv[0]), Integer.valueOf(csv[1]), Float.valueOf(csv[2]), Float.valueOf(csv[3]), csv[4])).append("\n");
+                responseLog.append(agregarRuta(Integer.valueOf(csv[1]), Integer.valueOf(csv[0]), Float.valueOf(csv[2]), Float.valueOf(csv[3]), csv[4])).append("\n");
+            }
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(padre, "Archivo no encontrado", "Error", JOptionPane.WARNING_MESSAGE);
+        } catch (IOException | NumberFormatException ex) {
+            JOptionPane.showMessageDialog(padre, "Ocurrió un error al leer el archivo. Por favor verifique su sintaxis.", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(padre, ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
+        } finally {
+            try {
+                if (br != null) {
+                    br.close();
+                }
+            } catch (IOException ex) {
+            }
+        }
+        responseLog.append("- Operación finalizada -");
+        JOptionPane.showMessageDialog(this, responseLog.toString(), "Resultado de la operación", JOptionPane.INFORMATION_MESSAGE);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDestino;
     private javax.swing.JButton btnRuta;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblDestino;
+    private javax.swing.JLabel lblRuta;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Agrega destino al árbol B
+     *
+     * @param codigo
+     * @param nombre
+     * @return
+     */
+    private static String agregarDestino(int codigo, java.lang.String nombre) {
+        com.cliente.ws.destino.DestinoWS_Service service = new com.cliente.ws.destino.DestinoWS_Service();
+        com.cliente.ws.destino.DestinoWS port = service.getDestinoWSPort();
+        return port.agregarDestino(codigo, nombre);
+    }
+
+    /**
+     * Agrega rutas a la matriz de adyacencia
+     *
+     * @param origen
+     * @param destino
+     * @param costoRuta
+     * @param tiempoRuta
+     * @param piloto
+     * @return
+     */
+    private static String agregarRuta(int origen, int destino, float costoRuta, float tiempoRuta, java.lang.String piloto) {
+        com.cliente.ws.ruta.RutaWS_Service service = new com.cliente.ws.ruta.RutaWS_Service();
+        com.cliente.ws.ruta.RutaWS port = service.getRutaWSPort();
+        return port.agregarRuta(origen, destino, costoRuta, tiempoRuta, piloto);
+    }
 }

@@ -32,12 +32,8 @@
 <xs:element name="nombreCliente" type="xs:string" minOccurs="0" />
 <xs:element name="costo" type="xs:float" />
 <xs:element name="tiempo" type="xs:float" />
-<xs:element name="viaje" type="tns:lista" minOccurs="0" />
+<xs:element name="viaje" type="xs:string" minOccurs="0" />
 </xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="lista">
-<xs:sequence />
 </xs:complexType>
 
 <xs:complexType name="agregarReservacionResponse">
