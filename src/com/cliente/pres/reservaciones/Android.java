@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.clienteedd.reservaciones;
+package com.cliente.pres.reservaciones;
 
 import javax.swing.JOptionPane;
 

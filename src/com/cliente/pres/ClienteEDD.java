@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.clienteedd;
-import com.clienteedd.rutas.Carga;
+package com.cliente.pres;
+import com.cliente.pres.rutas.Carga;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -56,7 +56,6 @@ public class ClienteEDD extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Coline Airport");
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(1024, 800));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jDesktopPane1.setBackground(new java.awt.Color(102, 102, 102));
@@ -207,7 +206,7 @@ public class ClienteEDD extends javax.swing.JFrame {
 
     private void modificarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarRutaActionPerformed
         // TODO add your handling code here:
-        JInternalFrame i = new com.clienteedd.rutas.Modificar(this);
+        JInternalFrame i = new com.cliente.pres.rutas.Modificar(this);
         this.jDesktopPane1.add(i);
         i.setVisible(true);
     }//GEN-LAST:event_modificarRutaActionPerformed
@@ -238,7 +237,7 @@ public class ClienteEDD extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        JInternalFrame i = new com.clienteedd.reservaciones.Carga(this);
+        JInternalFrame i = new com.cliente.pres.reservaciones.Carga(this);
         this.jDesktopPane1.add(i);
         i.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -253,14 +252,14 @@ public class ClienteEDD extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        JInternalFrame i = new com.clienteedd.rutas.EnRuta(this.jDesktopPane1);
+        JInternalFrame i = new com.cliente.pres.rutas.EnRuta(this.jDesktopPane1);
         this.jDesktopPane1.add(i);
         i.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        JInternalFrame i = new com.clienteedd.reservaciones.Android();
+        JInternalFrame i = new com.cliente.pres.reservaciones.Android();
         this.jDesktopPane1.add(i);
         i.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed

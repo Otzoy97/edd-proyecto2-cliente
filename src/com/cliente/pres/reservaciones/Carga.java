@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.clienteedd.reservaciones;
+package com.cliente.pres.reservaciones;
 
 import java.awt.Frame;
 import java.io.BufferedReader;
@@ -61,7 +61,7 @@ public class Carga extends javax.swing.JInternalFrame {
         setMaximumSize(new java.awt.Dimension(555, 90));
         setMinimumSize(new java.awt.Dimension(555, 90));
         setPreferredSize(new java.awt.Dimension(555, 90));
-        getContentPane().setLayout(new java.awt.GridLayout());
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cargar reservaciones", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Microsoft Sans Serif", 0, 12))); // NOI18N
         jPanel1.setLayout(new java.awt.GridBagLayout());

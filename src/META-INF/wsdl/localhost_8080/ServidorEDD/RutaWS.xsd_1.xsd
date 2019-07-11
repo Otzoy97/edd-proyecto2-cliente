@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:tns="http://ws.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.com/">
+
+<xs:element name="agregarRuta" type="tns:agregarRuta" />
+
+<xs:element name="agregarRutaResponse" type="tns:agregarRutaResponse" />
+
+<xs:element name="eliminarRuta" type="tns:eliminarRuta" />
+
+<xs:element name="eliminarRutaResponse" type="tns:eliminarRutaResponse" />
+
+<xs:element name="generarGrafoRutas" type="tns:generarGrafoRutas" />
+
+<xs:element name="generarGrafoRutasResponse" type="tns:generarGrafoRutasResponse" />
+
+<xs:element name="generarMatriz" type="tns:generarMatriz" />
+
+<xs:element name="generarMatrizResponse" type="tns:generarMatrizResponse" />
+
+<xs:element name="generarViajes" type="tns:generarViajes" />
+
+<xs:element name="generarViajesResponse" type="tns:generarViajesResponse" />
+
+<xs:element name="recuperarEncabezados" type="tns:recuperarEncabezados" />
+
+<xs:element name="recuperarEncabezadosResponse" type="tns:recuperarEncabezadosResponse" />
+
+<xs:element name="reporteRutaEn" type="tns:reporteRutaEn" />
+
+<xs:element name="reporteRutaEnResponse" type="tns:reporteRutaEnResponse" />
+
+<xs:complexType name="generarViajes">
+<xs:sequence>
+<xs:element name="origen" type="xs:int" />
+<xs:element name="destino" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="generarViajesResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="reporteRutaEn">
+<xs:sequence>
+<xs:element name="origen" type="xs:int" />
+<xs:element name="destino" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="reporteRutaEnResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="agregarRuta">
+<xs:sequence>
+<xs:element name="origen" type="xs:int" />
+<xs:element name="destino" type="xs:int" />
+<xs:element name="costoRuta" type="xs:float" />
+<xs:element name="tiempoRuta" type="xs:float" />
+<xs:element name="piloto" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="agregarRutaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="generarGrafoRutas">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="generarGrafoRutasResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="recuperarEncabezados">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="recuperarEncabezadosResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="generarMatriz">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="generarMatrizResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminarRuta">
+<xs:sequence>
+<xs:element name="origen" type="xs:int" />
+<xs:element name="destino" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminarRutaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

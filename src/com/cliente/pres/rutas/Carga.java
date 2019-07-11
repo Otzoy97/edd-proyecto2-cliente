@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.clienteedd.rutas;
+package com.cliente.pres.rutas;
 
 import java.awt.Frame;
 import java.io.BufferedReader;

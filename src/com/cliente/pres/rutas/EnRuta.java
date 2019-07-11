@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.clienteedd.rutas;
+package com.cliente.pres.rutas;
 
-import com.clienteedd.Visor;
+import com.cliente.pres.Visor;
 import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
 
 /**
  *
@@ -130,8 +129,8 @@ public class EnRuta extends javax.swing.JInternalFrame {
         
         for (String e : viajes) {
             aux = e.split(",");
-            a.addElement( new com.clienteedd.Elemento( Integer.parseInt(aux[0]) , aux[1]));
-            b.addElement( new com.clienteedd.Elemento( Integer.parseInt(aux[0]) , aux[1]));
+            a.addElement(new com.cliente.pres.Elemento( Integer.parseInt(aux[0]) , aux[1]));
+            b.addElement(new com.cliente.pres.Elemento( Integer.parseInt(aux[0]) , aux[1]));
         }
         this.cmbOrigen.setModel(a);
         this.cmbDestino.setModel(b);

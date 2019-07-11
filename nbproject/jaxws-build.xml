@@ -53,7 +53,7 @@
     <target name="wsimport-client-RutaWS" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/RutaWS"/>
         <property name="wsdl-RutaWS" location="xml-resources/web-service-references/RutaWS/wsdl/localhost_8080/ServidorEDD/RutaWS.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/RutaWS" destdir="${build.generated.dir}/jax-wsCache/RutaWS" wsdl="${wsdl-RutaWS}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/ServidorEDD/RutaWS?wsdl" xnocompile="true" xendorsed="true" package="com.clienteedd.ws.ruta">
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/RutaWS" destdir="${build.generated.dir}/jax-wsCache/RutaWS" wsdl="${wsdl-RutaWS}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/ServidorEDD/RutaWS?wsdl" xnocompile="true" xendorsed="true" package="com.cliente.ws.ruta">
             <depends file="${wsdl-RutaWS}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/RutaWS"/>
         </wsimport>
@@ -65,7 +65,7 @@
     </target>
     <target name="wsimport-client-clean-RutaWS" depends="-init-project">
         <delete dir="${build.generated.dir}/jax-wsCache/RutaWS"/>
-        <delete dir="${build.generated.sources.dir}/jax-ws/com/clienteedd/ws/ruta"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/cliente/ws/ruta"/>
     </target>
     <target name="wsimport-client-generate" depends="wsimport-client-ReservacionWS, wsimport-client-DestinoWS, wsimport-client-RutaWS"/>
 </project>

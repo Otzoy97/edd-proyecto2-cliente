@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.clienteedd.rutas;
+package com.cliente.pres.rutas;
 
 import java.awt.Frame;
 import javax.swing.JFrame;
@@ -229,8 +229,8 @@ public class Modificar extends javax.swing.JInternalFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-        Integer origen = ((com.clienteedd.Elemento) this.cmbOrigenMod.getSelectedItem()).getId(),
-                destino = ((com.clienteedd.Elemento) this.cmbOrigenDel.getSelectedItem()).getId();
+        Integer origen = ((com.cliente.pres.Elemento) this.cmbOrigenMod.getSelectedItem()).getId(),
+                destino = ((com.cliente.pres.Elemento) this.cmbOrigenDel.getSelectedItem()).getId();
         Float costo = ValidarDecimal(this.txtCostoModificar.getText()),
                 tiempo = ValidarDecimal(this.txtTiempoModificar.getText());
         //Lo mismo pero con los decimales
@@ -258,8 +258,8 @@ public class Modificar extends javax.swing.JInternalFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        Integer origen = ((com.clienteedd.Elemento) this.cmbOrigenMod.getSelectedItem()).getId(),
-                destino = ((com.clienteedd.Elemento) this.cmbOrigenDel.getSelectedItem()).getId();
+        Integer origen = ((com.cliente.pres.Elemento) this.cmbOrigenMod.getSelectedItem()).getId(),
+                destino = ((com.cliente.pres.Elemento) this.cmbOrigenDel.getSelectedItem()).getId();
         //Una vez finalizadas las validaciones se procederá a eliminar la ruta
         //Llamada a web service dentro de try catch
         JOptionPane.showMessageDialog(this, "Ruta eliminada exitosamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
@@ -294,10 +294,10 @@ public class Modificar extends javax.swing.JInternalFrame {
         
         for (String e : viajes) {
             aux = e.split(",");
-            a.addElement( new com.clienteedd.Elemento( Integer.parseInt(aux[0]) , aux[1]));
-            b.addElement( new com.clienteedd.Elemento( Integer.parseInt(aux[0]) , aux[1]));
-            c.addElement( new com.clienteedd.Elemento( Integer.parseInt(aux[0]) , aux[1]));
-            d.addElement( new com.clienteedd.Elemento( Integer.parseInt(aux[0]) , aux[1]));
+            a.addElement( new com.cliente.pres.Elemento( Integer.parseInt(aux[0]) , aux[1]));
+            b.addElement( new com.cliente.pres.Elemento( Integer.parseInt(aux[0]) , aux[1]));
+            c.addElement( new com.cliente.pres.Elemento( Integer.parseInt(aux[0]) , aux[1]));
+            d.addElement( new com.cliente.pres.Elemento( Integer.parseInt(aux[0]) , aux[1]));
         }
         this.cmbDestinoDel.setModel(a);
         this.cmbDestinoMod.setModel(b);
