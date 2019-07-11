@@ -45,12 +45,16 @@ public class ClienteEDD extends javax.swing.JFrame {
         visualizarArbol = new javax.swing.JMenuItem();
         visualizarMatriz = new javax.swing.JMenuItem();
         visualizarGrafo = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Coline Airport");
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(1024, 800));
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -138,6 +142,16 @@ public class ClienteEDD extends javax.swing.JFrame {
         });
         jMenu1.add(visualizarGrafo);
 
+        jMenuItem3.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/location-pinx24.png"))); // NOI18N
+        jMenuItem3.setText("Ruta en...");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
         jMenu3.add(jMenu1);
 
         menuBar.add(jMenu3);
@@ -165,6 +179,17 @@ public class ClienteEDD extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem2);
+        jMenu2.add(jSeparator4);
+
+        jMenuItem4.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/location-delx24.png"))); // NOI18N
+        jMenuItem4.setText("Reservaciones...");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
 
         menuBar.add(jMenu2);
 
@@ -189,23 +214,26 @@ public class ClienteEDD extends javax.swing.JFrame {
 
     private void visualizarArbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarArbolActionPerformed
         // TODO add your handling code here:
-        JInternalFrame i = new Visor("","");
+        Visor i = new Visor("","");
         this.jDesktopPane1.add(i);
         i.setVisible(true);
+        i.pintar();
     }//GEN-LAST:event_visualizarArbolActionPerformed
 
     private void visualizarMatrizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarMatrizActionPerformed
         // TODO add your handling code here:
-        JInternalFrame i = new Visor("","");
+        Visor i = new Visor("","");
         this.jDesktopPane1.add(i);
         i.setVisible(true);
+        i.pintar();
     }//GEN-LAST:event_visualizarMatrizActionPerformed
 
     private void visualizarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarGrafoActionPerformed
         // TODO add your handling code here:
-        JInternalFrame i = new Visor("","");
+        Visor i = new Visor("","");
         this.jDesktopPane1.add(i);
         i.setVisible(true);
+        i.pintar();
     }//GEN-LAST:event_visualizarGrafoActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -217,10 +245,25 @@ public class ClienteEDD extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        JInternalFrame i = new Visor("","");
+        Visor i = new Visor("","");
         this.jDesktopPane1.add(i);
         i.setVisible(true);
+        i.pintar();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        JInternalFrame i = new com.clienteedd.rutas.EnRuta(this.jDesktopPane1);
+        this.jDesktopPane1.add(i);
+        i.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        JInternalFrame i = new com.clienteedd.reservaciones.Android();
+        this.jDesktopPane1.add(i);
+        i.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,9 +297,12 @@ public class ClienteEDD extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem modificarRuta;
     private javax.swing.JMenuItem visualizarArbol;
