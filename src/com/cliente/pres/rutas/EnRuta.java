@@ -6,7 +6,6 @@
 package com.cliente.pres.rutas;
 
 import com.cliente.pres.Visor;
-import java.util.Iterator;
 import javax.swing.JDesktopPane;
 
 /**
@@ -120,11 +119,18 @@ public class EnRuta extends javax.swing.JInternalFrame {
         //Recupera los codigo de los combo box list
         Integer origen = ((com.cliente.pres.Elemento)this.cmbOrigen.getSelectedItem()).getId(),
                 destino = ((com.cliente.pres.Elemento)this.cmbDestino.getSelectedItem()).getId();
+        System.out.println(origen + " , " + destino);
         //Ejecuta el webservice y recupera el string base64
         String base64 = reporteRutaEn(origen,destino);
+        int c = 0;
+        while(base64.equals("")){
+            base64 = reporteRutaEn(origen,destino);
+            if(c++ == 10) break;
+        }
+        System.out.println(base64);
         Visor i = new Visor(base64, String.format("Ruta de %s a %s", 
                 ((com.cliente.pres.Elemento)this.cmbOrigen.getSelectedItem()).getValue(),
-                ((com.cliente.pres.Elemento)this.cmbDestino.getSelectedItem())));
+                ((com.cliente.pres.Elemento)this.cmbDestino.getSelectedItem()).getValue()));
         padre.add(i);
         i.setVisible(true);
         i.pintar();

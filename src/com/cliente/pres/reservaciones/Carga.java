@@ -126,12 +126,15 @@ public class Carga extends javax.swing.JInternalFrame {
      * @param URL 
      */
     public void cargarReservacion(String URL) {
-        String l, csv[], lviaje = "";
+        String l, csv[];
         BufferedReader br = null;
         StringBuilder responseLog = new StringBuilder();
+        StringBuilder lviaje;
+        indexar();
         try {
             br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(URL)), StandardCharsets.UTF_8));
             while ((l = br.readLine()) != null) {
+                lviaje = new StringBuilder();
                 csv = l.split(",");
                 int idReservacion = Integer.parseInt(csv[1]);
                 //Se asegura que la llave no existe previamente
@@ -140,13 +143,13 @@ public class Carga extends javax.swing.JInternalFrame {
                 }
                 //Recorre el resto del arreglo buscando y agregando el nombre de los archivos
                 for (int i = 4; i < csv.length; i++) {
-                    String n = buscar(Integer.parseInt(csv[i])) + ",";
-                    lviaje += (n != null ? n : "<CI>");
+                    String n = buscar(Integer.parseInt(csv[i]));
+                    lviaje.append(n != null ? (n+  ( i+1 <csv.length ? "," : "")  ) : "CV");
                 }
                 //Elimina la ultima coma
-                lviaje = lviaje.substring(0,lviaje.length()-2);
-                System.out.println(lviaje);
-                responseLog.append(agregarReservacion(idReservacion,csv[0], Float.valueOf(csv[2]), Float.valueOf(csv[3]), lviaje)).append("\n");
+                System.out.println(lviaje.toString());
+                
+                responseLog.append(agregarReservacion(idReservacion,csv[0], Float.valueOf(csv[2]), Float.valueOf(csv[3]), lviaje.toString())).append("\n");
             }
         } catch (IOException | NumberFormatException ex) {
             JOptionPane.showMessageDialog(padre, "Ocurrió un error al leer el archivo. Por favor verifique su sintaxis.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -175,7 +178,12 @@ public class Carga extends javax.swing.JInternalFrame {
      */
     private void indexar(){
         java.util.List<String> encabezados = recuperarEncabezados();
-        indice = new com.cliente.pres.Lista();
+        int contador = 0;
+        while(encabezados.isEmpty()){
+            encabezados = recuperarEncabezados();
+            if(contador++ == 10) break;
+        }
+        indice = new com.cliente.pres.Lista<>();
         String clave[];
         for(String str : encabezados){
             clave = str.split(",");
@@ -189,6 +197,7 @@ public class Carga extends javax.swing.JInternalFrame {
      * @return 
      */
     private String buscar(int clave){
+        //while(this.indice.esVacio()) {indexar();}
         for(com.cliente.pres.Elemento el : indice){
             if(el.getId() == clave)
                 return el.getValue();

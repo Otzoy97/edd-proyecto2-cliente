@@ -18,6 +18,7 @@ public class Android extends javax.swing.JInternalFrame {
      */
     public Android() {
         initComponents();
+        llenarLista();
     }
 
     /**
@@ -32,18 +33,20 @@ public class Android extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtOrigen = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtDestino = new javax.swing.JTextField();
         btnGenerar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         cmbViajes = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblCosto = new javax.swing.JLabel();
+        lblTiempo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btnReservar = new javax.swing.JButton();
+        cmbOrigen = new javax.swing.JComboBox<>();
+        cmbDestino = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -61,38 +64,20 @@ public class Android extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
 
         jLabel1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
-        jLabel1.setText("Código de origen");
+        jLabel1.setText("Origen");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         jPanel1.add(jLabel1, gridBagConstraints);
 
-        txtOrigen.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        jPanel1.add(txtOrigen, gridBagConstraints);
-
         jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
-        jLabel2.setText("Código de destino");
+        jLabel2.setText("Destino");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         jPanel1.add(jLabel2, gridBagConstraints);
-
-        txtDestino.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        jPanel1.add(txtDestino, gridBagConstraints);
 
         btnGenerar.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
         btnGenerar.setText("Generar viajes");
@@ -131,7 +116,7 @@ public class Android extends javax.swing.JInternalFrame {
         jPanel1.add(cmbViajes, gridBagConstraints);
 
         jLabel4.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
-        jLabel4.setText("Costo total");
+        jLabel4.setText("Costo total (Q.)");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
@@ -139,34 +124,34 @@ public class Android extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel4, gridBagConstraints);
 
         jLabel5.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
-        jLabel5.setText("Tiempo total");
+        jLabel5.setText("Tiempo total (min)");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         jPanel1.add(jLabel5, gridBagConstraints);
 
-        jLabel6.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblCosto.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
+        lblCosto.setForeground(new java.awt.Color(153, 153, 153));
+        lblCosto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
-        jPanel1.add(jLabel6, gridBagConstraints);
+        jPanel1.add(lblCosto, gridBagConstraints);
 
-        jLabel7.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTiempo.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
+        lblTiempo.setForeground(new java.awt.Color(153, 153, 153));
+        lblTiempo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 10;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 1;
-        jPanel1.add(jLabel7, gridBagConstraints);
+        jPanel1.add(lblTiempo, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
@@ -186,10 +171,45 @@ public class Android extends javax.swing.JInternalFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridheight = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         jPanel1.add(btnReservar, gridBagConstraints);
+
+        cmbOrigen.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        jPanel1.add(cmbOrigen, gridBagConstraints);
+
+        cmbDestino.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        jPanel1.add(cmbDestino, gridBagConstraints);
+
+        jLabel8.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
+        jLabel8.setText("Nombre");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        jPanel1.add(jLabel8, gridBagConstraints);
+
+        txtNombre.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        jPanel1.add(txtNombre, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -206,40 +226,40 @@ public class Android extends javax.swing.JInternalFrame {
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         // TODO add your handling code here:
         //Valida el código de origen y destino
-        Float origen = ValidarDecimal(this.txtOrigen.getText()),
-                destino = ValidarDecimal(this.txtDestino.getText());
-        //No es un numero
-        if (origen == null) {
-            JOptionPane.showMessageDialog(this, "El origen especificado no es un número entero", "Número inválido", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        //Es un número negativo
-        if (origen < 0) {
-            JOptionPane.showMessageDialog(this, "El origen especificado debe ser un número entero positivo", "Número inválido", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        //Lo mismo pero con el destino
-        if (destino == null) {
-            JOptionPane.showMessageDialog(this, "El destino especificado no es un número entero", "Número inválido", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        if (destino < 0) {
-            JOptionPane.showMessageDialog(this, "El destino especificado debe ser un número entero positivo", "Número inválido", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
+        Integer origen = ((com.cliente.pres.Elemento) this.cmbOrigen.getSelectedItem()).getId(),
+                destino = ((com.cliente.pres.Elemento) this.cmbDestino.getSelectedItem()).getId();
         //Realiza una llamada al webservice y recupera una lista de listas
         //Crea un arreglo de elementos
+        llenarViajes(origen,destino);
         //Habilita el botón reservar
+        this.btnReservar.setEnabled(true);
     }//GEN-LAST:event_btnGenerarActionPerformed
 
     private void btnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarActionPerformed
         // TODO add your handling code here:
+        if(this.txtNombre.getText() == null) {
+            JOptionPane.showMessageDialog(this, "Especifique el nombre del cliente", "Reservaciones", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        if(this.txtNombre.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Especifique el nombre del cliente", "Reservaciones", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
         int r = JOptionPane.showConfirmDialog(this,
-                String.format("Por favor revise los datos de la reservación:\n\tRuta: %s\n\tCosto: Q.%.2f\n Tiempo: %.2f min\n\n¿Desea crear la reservación con estos datos?"),
+                String.format("Por favor revise los datos de la reservación:\n\tCliente: %s\n\tRuta: %s\n\tCosto: Q.%.2f\n Tiempo: %.2f min\n\n¿Desea crear la reservación con estos datos?", this.txtNombre.getText(),
+                        ((Elemento)this.cmbViajes.getSelectedItem()).value, ((Elemento)this.cmbViajes.getSelectedItem()).costo, ((Elemento)this.cmbViajes.getSelectedItem()).tiempo ),
                 "Reservación", JOptionPane.OK_CANCEL_OPTION & JOptionPane.INFORMATION_MESSAGE);
         if (r == JOptionPane.OK_OPTION) {
             //Intentará llamar al webservice para crear una reservación
-            JOptionPane.showMessageDialog(this, "aea mongolazo");
+            int llave = 0;
+            while(verificarLlave(llave)) llave++;
+            String result = agregarReservacion(llave,this.txtNombre.getText(),((Elemento)this.cmbViajes.getSelectedItem()).costo, ((Elemento)this.cmbViajes.getSelectedItem()).tiempo, ((Elemento)this.cmbViajes.getSelectedItem()).value);
+            JOptionPane.showMessageDialog(this, result, "Resultado de la operación", JOptionPane.INFORMATION_MESSAGE);
+            this.lblCosto.setText( new String() );
+            this.lblTiempo.setText( new String() );
+            this.cmbViajes.setModel(new javax.swing.DefaultComboBoxModel());
+            this.txtNombre.setText(new String());
+            this.btnReservar.setEnabled(false);
         }
     }//GEN-LAST:event_btnReservarActionPerformed
 
@@ -247,18 +267,54 @@ public class Android extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         //Recupera el elemento actual que está siendo seleccionado el combo box
         //y luego coloca los datos de costo y tiempo en los labels correspondientes
+        this.lblCosto.setText( String.valueOf(       ((Elemento) this.cmbViajes.getSelectedItem()).costo) );
+        this.lblTiempo.setText( String.valueOf(       ((Elemento) this.cmbViajes.getSelectedItem()).tiempo) );
     }//GEN-LAST:event_cmbViajesActionPerformed
 
     /**
-     * Llena la lista con los elementos de los viajes
-     * @param viajes 
+     * Llena las listas con la información de los encabezados
+     * @param origen
+     * @param destino 
      */
-    private void llenarViajes(Elemento[] viajes){
+    private void llenarViajes(int origen, int destino) {
+        //Recupera la información de los encabezados
+        java.util.List<String> viajes = generarViajes(origen, destino);
+        int c =0;
+        while(viajes.isEmpty()){
+            viajes = recuperarEncabezados();
+            if (c++ == 10) break;
+        }
+        String[] aux;
         javax.swing.DefaultComboBoxModel a = new javax.swing.DefaultComboBoxModel();
-        for(Elemento e : viajes){
-            a.addElement(e);
+        int id = 0;
+        StringBuilder rutaViaje;// = new StringBuilder();
+        for (String e : viajes) {
+            rutaViaje = new StringBuilder();
+            aux = e.split(",");
+            for(int i = 2; i < aux.length ; i++){
+                rutaViaje.append(String.format("%s%s",aux[i], (i+1) < aux.length ? "," : "" ));
+            }
+            a.addElement(new Elemento(id, rutaViaje.toString(), Float.parseFloat(aux[0]),Float.parseFloat(aux[1])));
         }
         this.cmbViajes.setModel(a);
+    }
+    
+        /**
+     * Llena las listas con la información de los encabezados
+     */
+    private void llenarLista() {
+        //Recupera la información de los encabezados
+        java.util.List<String> viajes = recuperarEncabezados();
+        String[] aux;
+        javax.swing.DefaultComboBoxModel a = new javax.swing.DefaultComboBoxModel();
+        javax.swing.DefaultComboBoxModel b = new javax.swing.DefaultComboBoxModel();
+        for (String e : viajes) {
+            aux = e.split(",");
+            a.addElement(new com.cliente.pres.Elemento(Integer.parseInt(aux[0]), aux[1]));
+            b.addElement(new com.cliente.pres.Elemento(Integer.parseInt(aux[0]), aux[1]));
+        }
+        this.cmbOrigen.setModel(a);
+        this.cmbDestino.setModel(b);
     }
     
     /**
@@ -297,36 +353,47 @@ public class Android extends javax.swing.JInternalFrame {
             return value;
         }
     }
-    
-    /**
-     * Convierte una cadena que represetna un número en un número
-     *
-     * @param cadena
-     * @return un número decimal, {@code null} si no se pudo convertir
-     */
-    private Float ValidarDecimal(String cadena) {
-        try {
-            return Float.parseFloat(cadena);
-        } catch (NumberFormatException e) {
-            return null;
-        }
-    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerar;
     private javax.swing.JButton btnReservar;
+    private javax.swing.JComboBox<String> cmbDestino;
+    private javax.swing.JComboBox<String> cmbOrigen;
     private javax.swing.JComboBox<String> cmbViajes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField txtDestino;
-    private javax.swing.JTextField txtOrigen;
+    private javax.swing.JLabel lblCosto;
+    private javax.swing.JLabel lblTiempo;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
+
+    private static String agregarReservacion(int llave, java.lang.String nombreCliente, float costo, float tiempo, java.lang.String viaje) {
+        com.cliente.ws.reservacion.ReservacionWS_Service service = new com.cliente.ws.reservacion.ReservacionWS_Service();
+        com.cliente.ws.reservacion.ReservacionWS port = service.getReservacionWSPort();
+        return port.agregarReservacion(llave, nombreCliente, costo, tiempo, viaje);
+    }
+
+    private static java.util.List<java.lang.String> generarViajes(int origen, int destino) {
+        com.cliente.ws.ruta.RutaWS_Service service = new com.cliente.ws.ruta.RutaWS_Service();
+        com.cliente.ws.ruta.RutaWS port = service.getRutaWSPort();
+        return port.generarViajes(origen, destino);
+    }
+
+    private static java.util.List<java.lang.String> recuperarEncabezados() {
+        com.cliente.ws.ruta.RutaWS_Service service = new com.cliente.ws.ruta.RutaWS_Service();
+        com.cliente.ws.ruta.RutaWS port = service.getRutaWSPort();
+        return port.recuperarEncabezados();
+    }
+
+    private static boolean verificarLlave(int llave) {
+        com.cliente.ws.reservacion.ReservacionWS_Service service = new com.cliente.ws.reservacion.ReservacionWS_Service();
+        com.cliente.ws.reservacion.ReservacionWS port = service.getReservacionWSPort();
+        return port.verificarLlave(llave);
+    }
 }

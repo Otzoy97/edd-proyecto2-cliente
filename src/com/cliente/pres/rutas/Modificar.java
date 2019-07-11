@@ -6,7 +6,6 @@
 package com.cliente.pres.rutas;
 
 import java.awt.Frame;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class Modificar extends javax.swing.JInternalFrame {
 
-    private Frame padre;
+    private final Frame padre;
 
     /**
      * Creates new form Modificar
@@ -25,6 +24,7 @@ public class Modificar extends javax.swing.JInternalFrame {
     public Modificar(Frame padre) {
         initComponents();
         this.padre = padre;
+        this.llenarLista();
     }
 
     /**
@@ -230,7 +230,7 @@ public class Modificar extends javax.swing.JInternalFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
         Integer origen = ((com.cliente.pres.Elemento) this.cmbOrigenMod.getSelectedItem()).getId(),
-                destino = ((com.cliente.pres.Elemento) this.cmbOrigenDel.getSelectedItem()).getId();
+                destino = ((com.cliente.pres.Elemento) this.cmbDestinoMod.getSelectedItem()).getId();
         Float costo = ValidarDecimal(this.txtCostoModificar.getText()),
                 tiempo = ValidarDecimal(this.txtTiempoModificar.getText());
         //Lo mismo pero con los decimales
@@ -250,20 +250,31 @@ public class Modificar extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "El tiempo especificado debe ser un número positivo", "Número inválido", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        if(this.txtPilotoModificar.getText() == null){
+            JOptionPane.showMessageDialog(this, "Por favor ingrese el nombre del piloto", "Número inválido", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if(this.txtPilotoModificar.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Por favor ingrese el nombre del piloto", "Número inválido", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         //Una vez finalizadas las validaciones se procederá a modificar la ruta
+        String result = agregarRuta(origen,destino,costo,tiempo,this.txtPilotoModificar.getText());
         //Llamada a web service dentro de try catch
-        JOptionPane.showMessageDialog(this, "Ruta modificada exitosamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
-        this.llenarLista();
+        JOptionPane.showMessageDialog(this, result, "Resultado de la operación", JOptionPane.INFORMATION_MESSAGE);
+        this.txtCostoModificar.setText(new String());
+        this.txtPilotoModificar.setText(new String());
+        this.txtTiempoModificar.setText(new String());
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        Integer origen = ((com.cliente.pres.Elemento) this.cmbOrigenMod.getSelectedItem()).getId(),
-                destino = ((com.cliente.pres.Elemento) this.cmbOrigenDel.getSelectedItem()).getId();
+        Integer origen = ((com.cliente.pres.Elemento) this.cmbOrigenDel.getSelectedItem()).getId(),
+                destino = ((com.cliente.pres.Elemento) this.cmbDestinoDel.getSelectedItem()).getId();
         //Una vez finalizadas las validaciones se procederá a eliminar la ruta
         //Llamada a web service dentro de try catch
-        JOptionPane.showMessageDialog(this, "Ruta eliminada exitosamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
-        this.llenarLista();
+        String result = eliminarRuta(origen,destino);
+        JOptionPane.showMessageDialog(this, result, "Resultado de la operación", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
@@ -286,7 +297,8 @@ public class Modificar extends javax.swing.JInternalFrame {
      */
     private void llenarLista() {
         //Recupera la información de los encabezados
-        String[] viajes = new String[10], aux;
+       java.util.List<String> viajes = recuperarEncabezados();
+        String[] aux;
         javax.swing.DefaultComboBoxModel a = new javax.swing.DefaultComboBoxModel();
         javax.swing.DefaultComboBoxModel b = new javax.swing.DefaultComboBoxModel();
         javax.swing.DefaultComboBoxModel c = new javax.swing.DefaultComboBoxModel();
@@ -326,4 +338,23 @@ public class Modificar extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtPilotoModificar;
     private javax.swing.JTextField txtTiempoModificar;
     // End of variables declaration//GEN-END:variables
+
+    
+    private static java.util.List<java.lang.String> recuperarEncabezados() {
+        com.cliente.ws.ruta.RutaWS_Service service = new com.cliente.ws.ruta.RutaWS_Service();
+        com.cliente.ws.ruta.RutaWS port = service.getRutaWSPort();
+        return port.recuperarEncabezados();
+    }
+
+    private static String agregarRuta(int origen, int destino, float costoRuta, float tiempoRuta, java.lang.String piloto) {
+        com.cliente.ws.ruta.RutaWS_Service service = new com.cliente.ws.ruta.RutaWS_Service();
+        com.cliente.ws.ruta.RutaWS port = service.getRutaWSPort();
+        return port.agregarRuta(origen, destino, costoRuta, tiempoRuta, piloto);
+    }
+
+    private static String eliminarRuta(int origen, int destino) {
+        com.cliente.ws.ruta.RutaWS_Service service = new com.cliente.ws.ruta.RutaWS_Service();
+        com.cliente.ws.ruta.RutaWS port = service.getRutaWSPort();
+        return port.eliminarRuta(origen, destino);
+    }
 }
