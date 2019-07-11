@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:tns="http://ws.com/" xmlns:ns1="http://jaxb.dev.java.net/array" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.com/">
+
+<xs:import namespace="http://jaxb.dev.java.net/array" schemaLocation="http://localhost:8080/ServidorEDD/ReservacionWS?xsd=2" />
+
+<xs:element name="agregarReservacion" type="tns:agregarReservacion" />
+
+<xs:element name="agregarReservacionResponse" type="tns:agregarReservacionResponse" />
+
+<xs:element name="eliminarReservacionConLlave" type="tns:eliminarReservacionConLlave" />
+
+<xs:element name="eliminarReservacionConLlaveResponse" type="tns:eliminarReservacionConLlaveResponse" />
+
+<xs:element name="generarTablaHash" type="tns:generarTablaHash" />
+
+<xs:element name="generarTablaHashResponse" type="tns:generarTablaHashResponse" />
+
+<xs:element name="reservacionConLlave" type="tns:reservacionConLlave" />
+
+<xs:element name="reservacionConLlaveResponse" type="tns:reservacionConLlaveResponse" />
+
+<xs:element name="reservacionesDelCliente" type="tns:reservacionesDelCliente" />
+
+<xs:element name="reservacionesDelClienteResponse" type="tns:reservacionesDelClienteResponse" />
+
+<xs:element name="verificarLlave" type="tns:verificarLlave" />
+
+<xs:element name="verificarLlaveResponse" type="tns:verificarLlaveResponse" />
+
+<xs:complexType name="agregarReservacion">
+<xs:sequence>
+<xs:element name="llave" type="xs:int" />
+<xs:element name="nombreCliente" type="xs:string" minOccurs="0" />
+<xs:element name="costo" type="xs:float" />
+<xs:element name="tiempo" type="xs:float" />
+<xs:element name="viaje" type="tns:lista" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="lista">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="agregarReservacionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="reservacionesDelCliente">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="reservacionesDelClienteResponse">
+<xs:sequence>
+<xs:element name="return" type="ns1:stringArray" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verificarLlave">
+<xs:sequence>
+<xs:element name="llave" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verificarLlaveResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="generarTablaHash">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="generarTablaHashResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminarReservacionConLlave">
+<xs:sequence>
+<xs:element name="llave" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminarReservacionConLlaveResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="reservacionConLlave">
+<xs:sequence>
+<xs:element name="llave" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="reservacionConLlaveResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
