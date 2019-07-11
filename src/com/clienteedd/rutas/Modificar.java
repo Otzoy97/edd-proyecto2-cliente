@@ -40,8 +40,6 @@ public class Modificar extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtOrigenModificar = new javax.swing.JTextField();
-        txtDestinoModificar = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtCostoModificar = new javax.swing.JTextField();
@@ -49,12 +47,14 @@ public class Modificar extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         txtPilotoModificar = new javax.swing.JTextField();
         btnModificar = new javax.swing.JButton();
+        cmbOrigenMod = new javax.swing.JComboBox<>();
+        cmbDestinoMod = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtOrigenEliminar = new javax.swing.JTextField();
-        txtDestinoEliminar = new javax.swing.JTextField();
         btnEliminar = new javax.swing.JButton();
+        cmbOrigenDel = new javax.swing.JComboBox<>();
+        cmbDestinoDel = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -88,23 +88,6 @@ public class Modificar extends javax.swing.JInternalFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         jPanel1.add(jLabel2, gridBagConstraints);
-
-        txtOrigenModificar.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        jPanel1.add(txtOrigenModificar, gridBagConstraints);
-
-        txtDestinoModificar.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
-        txtDestinoModificar.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        jPanel1.add(txtDestinoModificar, gridBagConstraints);
 
         jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
         jLabel3.setText("Nuevo costo (Q.)");
@@ -170,6 +153,22 @@ public class Modificar extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 20);
         jPanel1.add(btnModificar, gridBagConstraints);
 
+        cmbOrigenMod.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        jPanel1.add(cmbOrigenMod, gridBagConstraints);
+
+        cmbDestinoMod.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        jPanel1.add(cmbDestinoMod, gridBagConstraints);
+
         getContentPane().add(jPanel1);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Eliminación", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Microsoft Sans Serif", 0, 12))); // NOI18N
@@ -194,22 +193,6 @@ public class Modificar extends javax.swing.JInternalFrame {
         gridBagConstraints.gridy = 2;
         jPanel2.add(jLabel7, gridBagConstraints);
 
-        txtOrigenEliminar.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        jPanel2.add(txtOrigenEliminar, gridBagConstraints);
-
-        txtDestinoEliminar.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        jPanel2.add(txtDestinoEliminar, gridBagConstraints);
-
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,6 +206,22 @@ public class Modificar extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 20);
         jPanel2.add(btnEliminar, gridBagConstraints);
 
+        cmbOrigenDel.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        jPanel2.add(cmbOrigenDel, gridBagConstraints);
+
+        cmbDestinoDel.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        jPanel2.add(cmbDestinoDel, gridBagConstraints);
+
         getContentPane().add(jPanel2);
 
         pack();
@@ -230,29 +229,10 @@ public class Modificar extends javax.swing.JInternalFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-        Integer origen = ValidarEntero(this.txtOrigenModificar.getText()),
-                destino = ValidarEntero(this.txtDestinoModificar.getText());
+        Integer origen = ((com.clienteedd.Elemento) this.cmbOrigenMod.getSelectedItem()).getId(),
+                destino = ((com.clienteedd.Elemento) this.cmbOrigenDel.getSelectedItem()).getId();
         Float costo = ValidarDecimal(this.txtCostoModificar.getText()),
                 tiempo = ValidarDecimal(this.txtTiempoModificar.getText());
-        //No es un numero
-        if (origen == null) {
-            JOptionPane.showMessageDialog(this, "El origen especificado no es un número entero", "Número inválido", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        //Es un número negativo
-        if (origen < 0) {
-            JOptionPane.showMessageDialog(this, "El origen especificado debe ser un número entero positivo", "Número inválido", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        //Lo mismo pero con el destino
-        if (destino == null) {
-            JOptionPane.showMessageDialog(this, "El destino especificado no es un número entero", "Número inválido", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        if (destino < 0) {
-            JOptionPane.showMessageDialog(this, "El destino especificado debe ser un número entero positivo", "Número inválido", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
         //Lo mismo pero con los decimales
         if (costo == null) {
             JOptionPane.showMessageDialog(this, "El costo especificado no es un número positivo", "Número inválido", JOptionPane.WARNING_MESSAGE);
@@ -273,53 +253,22 @@ public class Modificar extends javax.swing.JInternalFrame {
         //Una vez finalizadas las validaciones se procederá a modificar la ruta
         //Llamada a web service dentro de try catch
         JOptionPane.showMessageDialog(this, "Ruta modificada exitosamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
+        this.llenarLista();
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        Integer origen = ValidarEntero(this.txtOrigenModificar.getText()),
-                destino = ValidarEntero(this.txtDestinoModificar.getText());
-        //No es un numero
-        if (origen == null) {
-            JOptionPane.showMessageDialog(this, "El origen especificado no es un número entero", "Número inválido", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        //Es un número negativo
-        if (origen < 0) {
-            JOptionPane.showMessageDialog(this, "El origen especificado debe ser un número entero positivo", "Número inválido", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        //Lo mismo pero con el destino
-        if (destino == null) {
-            JOptionPane.showMessageDialog(this, "El destino especificado no es un número entero", "Número inválido", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        if (destino < 0) {
-            JOptionPane.showMessageDialog(this, "El destino especificado debe ser un número entero positivo", "Número inválido", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
+        Integer origen = ((com.clienteedd.Elemento) this.cmbOrigenMod.getSelectedItem()).getId(),
+                destino = ((com.clienteedd.Elemento) this.cmbOrigenDel.getSelectedItem()).getId();
         //Una vez finalizadas las validaciones se procederá a eliminar la ruta
         //Llamada a web service dentro de try catch
         JOptionPane.showMessageDialog(this, "Ruta eliminada exitosamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
+        this.llenarLista();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
-     * Convierte un cadena que representa un número en un número
-     *
-     * @param cadena
-     * @return un número entero, {@coce null} si no se pudo convertir
-     */
-    private Integer ValidarEntero(String cadena) {
-        try {
-            return Integer.parseInt(cadena);
-        } catch (NumberFormatException e) {
-            return null;
-        }
-    }
-
-    /**
      * Convierte una cadena que represetna un número en un número
-     * 
+     *
      * @param cadena
      * @return un número decimal, {@code null} si no se pudo convertir
      */
@@ -331,9 +280,39 @@ public class Modificar extends javax.swing.JInternalFrame {
         }
     }
 
+    /**
+     * Llena las listas con la información de los encabezados
+     * @param viajes 
+     */
+    private void llenarLista() {
+        //Recupera la información de los encabezados
+        String[] viajes = new String[10], aux;
+        javax.swing.DefaultComboBoxModel a = new javax.swing.DefaultComboBoxModel();
+        javax.swing.DefaultComboBoxModel b = new javax.swing.DefaultComboBoxModel();
+        javax.swing.DefaultComboBoxModel c = new javax.swing.DefaultComboBoxModel();
+        javax.swing.DefaultComboBoxModel d = new javax.swing.DefaultComboBoxModel();
+        
+        for (String e : viajes) {
+            aux = e.split(",");
+            a.addElement( new com.clienteedd.Elemento( Integer.parseInt(aux[0]) , aux[1]));
+            b.addElement( new com.clienteedd.Elemento( Integer.parseInt(aux[0]) , aux[1]));
+            c.addElement( new com.clienteedd.Elemento( Integer.parseInt(aux[0]) , aux[1]));
+            d.addElement( new com.clienteedd.Elemento( Integer.parseInt(aux[0]) , aux[1]));
+        }
+        this.cmbDestinoDel.setModel(a);
+        this.cmbDestinoMod.setModel(b);
+        this.cmbOrigenDel.setModel(c);
+        this.cmbOrigenMod.setModel(d);
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JComboBox<String> cmbDestinoDel;
+    private javax.swing.JComboBox<String> cmbDestinoMod;
+    private javax.swing.JComboBox<String> cmbOrigenDel;
+    private javax.swing.JComboBox<String> cmbOrigenMod;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -344,10 +323,6 @@ public class Modificar extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtCostoModificar;
-    private javax.swing.JTextField txtDestinoEliminar;
-    private javax.swing.JTextField txtDestinoModificar;
-    private javax.swing.JTextField txtOrigenEliminar;
-    private javax.swing.JTextField txtOrigenModificar;
     private javax.swing.JTextField txtPilotoModificar;
     private javax.swing.JTextField txtTiempoModificar;
     // End of variables declaration//GEN-END:variables

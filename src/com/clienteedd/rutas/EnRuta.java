@@ -38,10 +38,10 @@ public class EnRuta extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        cmbOrigen = new javax.swing.JComboBox<>();
+        cmbDestino = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setTitle("Ruta en...");
@@ -50,7 +50,7 @@ public class EnRuta extends javax.swing.JInternalFrame {
         setMaximumSize(new java.awt.Dimension(200, 120));
         setMinimumSize(new java.awt.Dimension(200, 120));
         setPreferredSize(new java.awt.Dimension(200, 120));
-        getContentPane().setLayout(new java.awt.GridLayout());
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
@@ -59,6 +59,7 @@ public class EnRuta extends javax.swing.JInternalFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         jPanel1.add(jLabel1, gridBagConstraints);
 
         jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
@@ -66,23 +67,8 @@ public class EnRuta extends javax.swing.JInternalFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         jPanel1.add(jLabel2, gridBagConstraints);
-
-        jTextField1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        jPanel1.add(jTextField1, gridBagConstraints);
-
-        jTextField2.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 10)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        jPanel1.add(jTextField2, gridBagConstraints);
 
         jButton1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
         jButton1.setText("Visualizar");
@@ -104,6 +90,20 @@ public class EnRuta extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         jPanel1.add(jSeparator1, gridBagConstraints);
 
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        jPanel1.add(cmbOrigen, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        jPanel1.add(cmbDestino, gridBagConstraints);
+
         getContentPane().add(jPanel1);
 
         pack();
@@ -118,14 +118,32 @@ public class EnRuta extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+        /**
+     * Llena las listas con la información de los encabezados
+     * @param viajes 
+     */
+    private void llenarLista() {
+        //Recupera la información de los encabezados
+        String[] viajes = new String[10], aux;
+        javax.swing.DefaultComboBoxModel a = new javax.swing.DefaultComboBoxModel();
+        javax.swing.DefaultComboBoxModel b = new javax.swing.DefaultComboBoxModel();
+        
+        for (String e : viajes) {
+            aux = e.split(",");
+            a.addElement( new com.clienteedd.Elemento( Integer.parseInt(aux[0]) , aux[1]));
+            b.addElement( new com.clienteedd.Elemento( Integer.parseInt(aux[0]) , aux[1]));
+        }
+        this.cmbOrigen.setModel(a);
+        this.cmbDestino.setModel(b);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbDestino;
+    private javax.swing.JComboBox<String> cmbOrigen;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
