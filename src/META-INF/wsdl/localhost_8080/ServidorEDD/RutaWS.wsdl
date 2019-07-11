@@ -4,23 +4,23 @@
 <xsd:import namespace="http://ws.com/" schemaLocation="http://localhost:8080/ServidorEDD/RutaWS?xsd=1" />
 </xsd:schema>
 </types>
-<message name="generarViajes">
-<part name="parameters" element="tns:generarViajes" />
-</message>
-<message name="generarViajesResponse">
-<part name="parameters" element="tns:generarViajesResponse" />
-</message>
 <message name="agregarRuta">
 <part name="parameters" element="tns:agregarRuta" />
 </message>
 <message name="agregarRutaResponse">
 <part name="parameters" element="tns:agregarRutaResponse" />
 </message>
-<message name="generarMatriz">
-<part name="parameters" element="tns:generarMatriz" />
+<message name="generarViajes">
+<part name="parameters" element="tns:generarViajes" />
 </message>
-<message name="generarMatrizResponse">
-<part name="parameters" element="tns:generarMatrizResponse" />
+<message name="generarViajesResponse">
+<part name="parameters" element="tns:generarViajesResponse" />
+</message>
+<message name="eliminarRuta">
+<part name="parameters" element="tns:eliminarRuta" />
+</message>
+<message name="eliminarRutaResponse">
+<part name="parameters" element="tns:eliminarRutaResponse" />
 </message>
 <message name="reporteRutaEn">
 <part name="parameters" element="tns:reporteRutaEn" />
@@ -28,11 +28,11 @@
 <message name="reporteRutaEnResponse">
 <part name="parameters" element="tns:reporteRutaEnResponse" />
 </message>
-<message name="eliminarRuta">
-<part name="parameters" element="tns:eliminarRuta" />
+<message name="generarMatriz">
+<part name="parameters" element="tns:generarMatriz" />
 </message>
-<message name="eliminarRutaResponse">
-<part name="parameters" element="tns:eliminarRutaResponse" />
+<message name="generarMatrizResponse">
+<part name="parameters" element="tns:generarMatrizResponse" />
 </message>
 <message name="generarGrafoRutas">
 <part name="parameters" element="tns:generarGrafoRutas" />
@@ -47,25 +47,25 @@
 <part name="parameters" element="tns:recuperarEncabezadosResponse" />
 </message>
 <portType name="RutaWS">
-<operation name="generarViajes">
-<input wsam:Action="http://ws.com/RutaWS/generarViajesRequest" message="tns:generarViajes" />
-<output wsam:Action="http://ws.com/RutaWS/generarViajesResponse" message="tns:generarViajesResponse" />
-</operation>
 <operation name="agregarRuta">
 <input wsam:Action="http://ws.com/RutaWS/agregarRutaRequest" message="tns:agregarRuta" />
 <output wsam:Action="http://ws.com/RutaWS/agregarRutaResponse" message="tns:agregarRutaResponse" />
 </operation>
-<operation name="generarMatriz">
-<input wsam:Action="http://ws.com/RutaWS/generarMatrizRequest" message="tns:generarMatriz" />
-<output wsam:Action="http://ws.com/RutaWS/generarMatrizResponse" message="tns:generarMatrizResponse" />
+<operation name="generarViajes">
+<input wsam:Action="http://ws.com/RutaWS/generarViajesRequest" message="tns:generarViajes" />
+<output wsam:Action="http://ws.com/RutaWS/generarViajesResponse" message="tns:generarViajesResponse" />
+</operation>
+<operation name="eliminarRuta">
+<input wsam:Action="http://ws.com/RutaWS/eliminarRutaRequest" message="tns:eliminarRuta" />
+<output wsam:Action="http://ws.com/RutaWS/eliminarRutaResponse" message="tns:eliminarRutaResponse" />
 </operation>
 <operation name="reporteRutaEn">
 <input wsam:Action="http://ws.com/RutaWS/reporteRutaEnRequest" message="tns:reporteRutaEn" />
 <output wsam:Action="http://ws.com/RutaWS/reporteRutaEnResponse" message="tns:reporteRutaEnResponse" />
 </operation>
-<operation name="eliminarRuta">
-<input wsam:Action="http://ws.com/RutaWS/eliminarRutaRequest" message="tns:eliminarRuta" />
-<output wsam:Action="http://ws.com/RutaWS/eliminarRutaResponse" message="tns:eliminarRutaResponse" />
+<operation name="generarMatriz">
+<input wsam:Action="http://ws.com/RutaWS/generarMatrizRequest" message="tns:generarMatriz" />
+<output wsam:Action="http://ws.com/RutaWS/generarMatrizResponse" message="tns:generarMatrizResponse" />
 </operation>
 <operation name="generarGrafoRutas">
 <input wsam:Action="http://ws.com/RutaWS/generarGrafoRutasRequest" message="tns:generarGrafoRutas" />
@@ -78,15 +78,6 @@
 </portType>
 <binding name="RutaWSPortBinding" type="tns:RutaWS">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
-<operation name="generarViajes">
-<soap:operation soapAction="" />
-<input>
-<soap:body use="literal" />
-</input>
-<output>
-<soap:body use="literal" />
-</output>
-</operation>
 <operation name="agregarRuta">
 <soap:operation soapAction="" />
 <input>
@@ -96,7 +87,16 @@
 <soap:body use="literal" />
 </output>
 </operation>
-<operation name="generarMatriz">
+<operation name="generarViajes">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="eliminarRuta">
 <soap:operation soapAction="" />
 <input>
 <soap:body use="literal" />
@@ -114,7 +114,7 @@
 <soap:body use="literal" />
 </output>
 </operation>
-<operation name="eliminarRuta">
+<operation name="generarMatriz">
 <soap:operation soapAction="" />
 <input>
 <soap:body use="literal" />

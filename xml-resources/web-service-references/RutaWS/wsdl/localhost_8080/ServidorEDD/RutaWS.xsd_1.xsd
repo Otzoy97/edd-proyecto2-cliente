@@ -90,16 +90,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="generarMatriz">
-<xs:sequence />
-</xs:complexType>
-
-<xs:complexType name="generarMatrizResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0" />
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="eliminarRuta">
 <xs:sequence>
 <xs:element name="origen" type="xs:int" />
@@ -108,6 +98,16 @@
 </xs:complexType>
 
 <xs:complexType name="eliminarRutaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="generarMatriz">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="generarMatrizResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0" />
 </xs:sequence>

@@ -12,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -129,19 +130,22 @@ public class Carga extends javax.swing.JInternalFrame {
         BufferedReader br = null;
         StringBuilder responseLog = new StringBuilder();
         try {
-            br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(URL)), Charset.forName("UTF-8")));
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(URL)), StandardCharsets.UTF_8));
             while ((l = br.readLine()) != null) {
                 csv = l.split(",");
                 int idReservacion = Integer.parseInt(csv[1]);
+                //Se asegura que la llave no existe previamente
                 while (verificarLlave(idReservacion)) {
                     idReservacion++;
                 }
+                //Recorre el resto del arreglo buscando y agregando el nombre de los archivos
                 for (int i = 4; i < csv.length; i++) {
                     String n = buscar(Integer.parseInt(csv[i])) + ",";
-                    lviaje = (n != null ? n : "<CI>");
+                    lviaje += (n != null ? n : "<CI>");
                 }
                 //Elimina la ultima coma
                 lviaje = lviaje.substring(0,lviaje.length()-2);
+                System.out.println(lviaje);
                 responseLog.append(agregarReservacion(idReservacion,csv[0], Float.valueOf(csv[2]), Float.valueOf(csv[3]), lviaje)).append("\n");
             }
         } catch (IOException | NumberFormatException ex) {

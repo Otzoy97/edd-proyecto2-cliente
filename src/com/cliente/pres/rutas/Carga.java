@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -194,7 +195,7 @@ public class Carga extends javax.swing.JInternalFrame {
         BufferedReader br = null;
         StringBuilder responseLog = new StringBuilder();
         try {
-            br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(URL)), Charset.forName("UTF-8")));
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(URL)),StandardCharsets.UTF_8));
             while ((l = br.readLine()) != null) {
                 csv = l.split(",");
                 responseLog.append(agregarDestino(Integer.valueOf(csv[0]), csv[1])).append("\n");
@@ -225,7 +226,7 @@ public class Carga extends javax.swing.JInternalFrame {
         BufferedReader br = null;
         StringBuilder responseLog = new StringBuilder();
         try {
-            br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(URL)), Charset.forName("UTF-8")));//new FileReader(new File(URL)));
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(URL)), StandardCharsets.UTF_8));//new FileReader(new File(URL)));
             while ((l = br.readLine()) != null) {
                 csv = l.split(",");
                 responseLog.append(agregarRuta(Integer.valueOf(csv[0]), Integer.valueOf(csv[1]), Float.valueOf(csv[2]), Float.valueOf(csv[3]), csv[4])).append("\n");

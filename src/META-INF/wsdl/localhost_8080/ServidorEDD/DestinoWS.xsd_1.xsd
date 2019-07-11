@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:tns="http://ws.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.com/">
+
+<xs:element name="agregarDestino" type="tns:agregarDestino" />
+
+<xs:element name="agregarDestinoResponse" type="tns:agregarDestinoResponse" />
+
+<xs:element name="generarArbol" type="tns:generarArbol" />
+
+<xs:element name="generarArbolResponse" type="tns:generarArbolResponse" />
+
+<xs:complexType name="agregarDestino">
+<xs:sequence>
+<xs:element name="codigo" type="xs:int" />
+<xs:element name="nombre" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="agregarDestinoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="generarArbol">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="generarArbolResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

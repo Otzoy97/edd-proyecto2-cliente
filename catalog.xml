@@ -6,11 +6,11 @@
     <system systemId="http://localhost:8080/EDDPROYECTO2/RutaWS?xsd=1" uri="xml-resources/web-service-references/RutaWS/wsdl/localhost_8080/EDDPROYECTO2/RutaWS.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/EDDPROYECTO2/ReservacionWS?wsdl" uri="xml-resources/web-service-references/ReservacionWS/wsdl/localhost_8080/EDDPROYECTO2/ReservacionWS.wsdl"/>
     <system systemId="http://localhost:8080/EDDPROYECTO2/ReservacionWS?xsd=1" uri="xml-resources/web-service-references/ReservacionWS/wsdl/localhost_8080/EDDPROYECTO2/ReservacionWS.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/ServidorEDD/ReservacionWS?wsdl" uri="xml-resources/web-service-references/ReservacionWS/wsdl/localhost_8080/ServidorEDD/ReservacionWS.wsdl"/>
+    <system systemId="http://localhost:8080/ServidorEDD/ReservacionWS?xsd=1" uri="xml-resources/web-service-references/ReservacionWS/wsdl/localhost_8080/ServidorEDD/ReservacionWS.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/ServidorEDD/ReservacionWS?xsd=2" uri="xml-resources/web-service-references/ReservacionWS/wsdl/localhost_8080/ServidorEDD/ReservacionWS.xsd_2.xsd"/>
     <system systemId="http://localhost:8080/ServidorEDD/DestinoWS?wsdl" uri="xml-resources/web-service-references/DestinoWS/wsdl/localhost_8080/ServidorEDD/DestinoWS.wsdl"/>
     <system systemId="http://localhost:8080/ServidorEDD/DestinoWS?xsd=1" uri="xml-resources/web-service-references/DestinoWS/wsdl/localhost_8080/ServidorEDD/DestinoWS.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/ServidorEDD/RutaWS?wsdl" uri="xml-resources/web-service-references/RutaWS/wsdl/localhost_8080/ServidorEDD/RutaWS.wsdl"/>
     <system systemId="http://localhost:8080/ServidorEDD/RutaWS?xsd=1" uri="xml-resources/web-service-references/RutaWS/wsdl/localhost_8080/ServidorEDD/RutaWS.xsd_1.xsd"/>
-    <system systemId="http://localhost:8080/ServidorEDD/ReservacionWS?wsdl" uri="xml-resources/web-service-references/ReservacionWS/wsdl/localhost_8080/ServidorEDD/ReservacionWS.wsdl"/>
-    <system systemId="http://localhost:8080/ServidorEDD/ReservacionWS?xsd=1" uri="xml-resources/web-service-references/ReservacionWS/wsdl/localhost_8080/ServidorEDD/ReservacionWS.xsd_1.xsd"/>
-    <system systemId="http://localhost:8080/ServidorEDD/ReservacionWS?xsd=2" uri="xml-resources/web-service-references/ReservacionWS/wsdl/localhost_8080/ServidorEDD/ReservacionWS.xsd_2.xsd"/>
 </catalog>

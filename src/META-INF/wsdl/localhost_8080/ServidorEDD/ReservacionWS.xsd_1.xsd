@@ -66,16 +66,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="generarTablaHash">
-<xs:sequence />
-</xs:complexType>
-
-<xs:complexType name="generarTablaHashResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0" />
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="eliminarReservacionConLlave">
 <xs:sequence>
 <xs:element name="llave" type="xs:int" />
@@ -83,6 +73,16 @@
 </xs:complexType>
 
 <xs:complexType name="eliminarReservacionConLlaveResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="generarTablaHash">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="generarTablaHashResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0" />
 </xs:sequence>
