@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
-    <system systemId="http://localhost:8080/EDDPROYECTO2/DestinoWS?wsdl" uri="wsdl/localhost_8080/EDDPROYECTO2/DestinoWS.wsdl"/>
-    <system systemId="http://localhost:8080/EDDPROYECTO2/DestinoWS?xsd=1" uri="wsdl/localhost_8080/EDDPROYECTO2/DestinoWS.xsd_1.xsd"/>
-    <system systemId="http://localhost:8080/EDDPROYECTO2/RutaWS?wsdl" uri="wsdl/localhost_8080/EDDPROYECTO2/RutaWS.wsdl"/>
-    <system systemId="http://localhost:8080/EDDPROYECTO2/RutaWS?xsd=1" uri="wsdl/localhost_8080/EDDPROYECTO2/RutaWS.xsd_1.xsd"/>
-    <system systemId="http://localhost:8080/EDDPROYECTO2/ReservacionWS?wsdl" uri="wsdl/localhost_8080/EDDPROYECTO2/ReservacionWS.wsdl"/>
-    <system systemId="http://localhost:8080/EDDPROYECTO2/ReservacionWS?xsd=1" uri="wsdl/localhost_8080/EDDPROYECTO2/ReservacionWS.xsd_1.xsd"/>
-</catalog>
