@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -42,8 +43,8 @@ public class Visor extends javax.swing.JInternalFrame {
             BufferedImage img = ImageIO.read(new ByteArrayInputStream(Base64.getDecoder().decode(base64)));
             this.jLabel1.setIcon(new ImageIcon(img));
             this.jLabel1.setToolTipText(this.title);
-        } catch (IOException ex) {
-            Logger.getLogger(Visor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Nada que mostrar", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
 
@@ -67,6 +68,7 @@ public class Visor extends javax.swing.JInternalFrame {
         setResizable(true);
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/res/location-seex24.png"))); // NOI18N
         setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
